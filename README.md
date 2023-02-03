@@ -2,11 +2,11 @@
 
 ## Description
 
-placeholder
+A simple calendar application that allows a user to save events for each hour of the day. Utilizes third-party APIs, including Bootstrap, fontawesome, Google Fonts, jQuery, and Day.js.
 
 ## Link
 
-placeholder
+https://jmulcahy92.github.io/Workday-Scheduler/
 
 ## Screenshot
 
