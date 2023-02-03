@@ -9,11 +9,15 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  var saveButtons = $('.saveBtn');
+  var saveButtons = $('.saveBtn'); // save-button elements
 
+  // click event listener
   saveButtons.on('click', function() {
-    
+    var parentId = $(this).parent().attr('id'); // get id of parent of 'this' button user clicked
+    var textContent = $('#'+parentId).children('textarea').val(); // get user's value of timeblock textarea (form)
+    localStorage.setItem(parentId, textContent); // save to local storage under 'hour-x' for easy retrieval to relevant timeblock on refresh
   });
+
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -39,7 +43,12 @@ $(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  
+
+  // could technically combine with above loop
+  for (i = 9; i < 18; i++) {
+    var savedText = localStorage.getItem('hour-'+i) || ""; // if there is something stored under 'hour-i', save to varible; otherwise save an empty string
+    $('#hour-'+i).children('textarea').text(savedText); // traverse DOM to textarea child of 'hour-i' timeblock element and change text to stored value / empty string
+  }
 
 
   // TODO: Add code to display the current date in the header of the page.
